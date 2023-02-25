@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import MuiButton from "../UI/Button";
 import Button from "../UI/Button"
 
 const BasketItem = ({title, price , amount , decrementAmount , incrementAmount ,})=>{
@@ -16,8 +17,8 @@ const BasketItem = ({title, price , amount , decrementAmount , incrementAmount ,
                 <Amount> x {amount} </Amount>
             </PriceAmountContainer>
             <CounterContainer>
-                <Button borderStyle="squared" variant="outlined" onClick={decrementAmount} >-</Button>
-                <Button borderStyle="squared" variant="outlined" onClick={incrementAmount}>+</Button>
+                <MuiButton borderStyle="squared" variant="outlined" onClick={decrementAmount} >-</MuiButton>
+                <MuiButton borderStyle="squared" variant="outlined" onClick={incrementAmount}>+</MuiButton>
             </CounterContainer>
 
         </Content>

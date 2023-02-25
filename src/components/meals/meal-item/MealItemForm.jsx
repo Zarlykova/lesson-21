@@ -1,10 +1,13 @@
 import Button from "../../UI/Button";
 import { ReactComponent as PlusIcon } from "../../../assets/icons/plus-icon.svg"
-import styled from "styled-components";
+import styledComponents from "styled-components";
+import { styled } from "@mui/system";
 import { useContext, useState } from "react";
 import { BasketContext } from "../../../store/BasketContext";
 import { addToBasket } from "../../../store/basket/basketSlice";
 import { useDispatch } from "react-redux";
+import { TextField } from "@mui/material";
+import MuiButton from "../../UI/Button";
 
 const MealItemForm =({id , title , price})=>{
 const dispatch = useDispatch()
@@ -30,32 +33,46 @@ const dispatch = useDispatch()
 
     return(
         <StyledForm onSubmit={submitHandler}>
-        <InputContainer>
+        <InputContainer> 
             <label htmlFor={id}>Amount</label>
-            <StyledInput 
-            value={amount}
-            onChange={amountChangeHandler}
-            type="number"
-            id={id}
-            min={1} 
-            defaultValue={1}/>
+        <StyledTextField
+          id={id}
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          size='small'
+          value={amount}
+          onChange={amountChangeHandler}
+        />
         </InputContainer>
-        
-        <Button >     
-        <StyledIcon/> Add</Button>
+        <MuiButton >     
+        <StyledIcon/> Add</MuiButton>
     </StyledForm>
     )
 }
 
 export default MealItemForm;
 
+const StyledTextField = styled(TextField)(()=>({
+'&.MuiTextField-root':{
+    width:'60px',
+},
+"& .MuiOutlinedInput-input":{
+    fontWeight:' 500',
+    fontSize: '16px',
+    padding: '4px 12px',
+}
 
-const StyledForm = styled.form`
+}))
+
+
+const StyledForm = styledComponents.form`
     display: flex;
     flex-direction:column;
     align-items:flex-end;
 `
-const InputContainer = styled.div`
+const InputContainer = styledComponents.div`
     margin-bottom:12px;
     label{
         font-weight: 600;
@@ -65,7 +82,7 @@ const InputContainer = styled.div`
 
     }
 `
-const StyledInput = styled.input`
+const StyledInput = styledComponents.input`
     width: 60px;
     height: 32px;
     border-radius: 6px;
@@ -80,6 +97,6 @@ const StyledInput = styled.input`
 
 `
 
-const StyledIcon = styled(PlusIcon)`
+const StyledIcon = styledComponents(PlusIcon)`
     margin-right:10px;
 `

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MuiButton from "../UI/Button";
 import Button from "../UI/Button"
 const TotalAmount=({price , onClose , onOrder  })=>{
     const orderButton = price > 0 ? <Button onClick={onOrder} >Order</Button>: null
@@ -12,7 +13,7 @@ const TotalAmount=({price , onClose , onOrder  })=>{
             </InfoContainer>
            
             <ActionButtonsContainer>
-                <Button variant="outlined" onClick={onClose}>Close</Button>
+                <MuiButton variant="outlined" onClick={onClose}>Close</MuiButton>
                {orderButton } 
             </ActionButtonsContainer>
         </div>
